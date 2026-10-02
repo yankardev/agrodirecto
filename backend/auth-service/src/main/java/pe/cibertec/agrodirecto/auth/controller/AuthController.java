@@ -7,6 +7,8 @@ import pe.cibertec.agrodirecto.auth.dto.AuthResponse;
 import pe.cibertec.agrodirecto.auth.dto.LoginRequest;
 import pe.cibertec.agrodirecto.auth.dto.RegisterRequest;
 import pe.cibertec.agrodirecto.auth.service.AuthService;
+import org.springframework.security.core.Authentication;
+import pe.cibertec.agrodirecto.auth.dto.UserResponse;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -23,5 +25,13 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request));
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserResponse> me(Authentication authentication) {
+
+        return ResponseEntity.ok(
+            authService.getCurrentUser(authentication.getName())
+        );
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pe.cibertec.agrodirecto.auth.dto.AuthResponse;
 import pe.cibertec.agrodirecto.auth.dto.LoginRequest;
 import pe.cibertec.agrodirecto.auth.dto.RegisterRequest;
+import pe.cibertec.agrodirecto.auth.dto.UserResponse;
 import pe.cibertec.agrodirecto.auth.entity.Rol;
 import pe.cibertec.agrodirecto.auth.entity.Usuario;
 import pe.cibertec.agrodirecto.auth.repository.RolRepository;
@@ -76,6 +77,21 @@ public class AuthServiceImpl implements AuthService {
         return new AuthResponse(
             token,
             "Bearer",
+            usuario.getEmail(),
+            usuario.getRol().getNombre()
+        );
+    }
+
+    @Override
+    public UserResponse getCurrentUser(String email) {
+
+        Usuario usuario = usuarioRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        return new UserResponse(
+            usuario.getId(),
+            usuario.getNombres(),
+            usuario.getApellidos(),
             usuario.getEmail(),
             usuario.getRol().getNombre()
         );
