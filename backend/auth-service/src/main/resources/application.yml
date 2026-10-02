@@ -1,0 +1,18 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: \
+    username: \
+    password: \
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
