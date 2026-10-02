@@ -4,13 +4,13 @@ Puerto local: **8082**.
 
 Estructura interna por capas:
 
-- : endpoints REST.
-- : contratos de negocio.
-- : implementación de la lógica.
-- : persistencia.
-- : entidades del dominio.
-- : objetos de entrada/salida.
-- : configuración.
-- : manejo de errores.
+- `controller`: endpoints REST.
+- `service`: contratos de negocio.
+- `service/impl`: implementación de la lógica.
+- `repository`: persistencia.
+- `entity`: entidades del dominio.
+- `dto`: objetos de entrada/salida.
+- `config`: configuración.
+- `exception`: manejo de errores.
 
-El código funcional se implementará de manera incremental mediante ramas .
+El código funcional se implementará de manera incremental mediante ramas `feature/*`.

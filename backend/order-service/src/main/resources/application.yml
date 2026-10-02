@@ -4,20 +4,20 @@ spring:
   application:
     name: order-service
   datasource:
-    url: \
-    username: \
-    password: \
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/order_db}
+    username: ${DB_USER:agrodirecto}
+    password: ${DB_PASSWORD:agrodirecto123}
   jpa:
     hibernate:
       ddl-auto: none
     open-in-view: false
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: ${RABBITMQ_PORT:5672}
     username: ${RABBITMQ_USER:agrodirecto}
     password: ${RABBITMQ_PASSWORD:agrodirecto123}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

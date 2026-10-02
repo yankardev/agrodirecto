@@ -4,9 +4,9 @@ spring:
   application:
     name: catalog-service
   datasource:
-    url: \
-    username: \
-    password: \
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/catalog_db}
+    username: ${DB_USER:agrodirecto}
+    password: ${DB_PASSWORD:agrodirecto123}
   jpa:
     hibernate:
       ddl-auto: none

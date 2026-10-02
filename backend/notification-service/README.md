@@ -2,15 +2,14 @@
 
 Puerto local: **8084**.
 
-Estructura interna por capas:
+Servicio responsable de consumir eventos asíncronos mediante RabbitMQ y procesar notificaciones.
 
-- : endpoints REST.
-- : contratos de negocio.
-- : implementación de la lógica.
-- : persistencia.
-- : entidades del dominio.
-- : objetos de entrada/salida.
-- : configuración.
-- : manejo de errores.
+Estructura inicial por capas:
 
-El código funcional se implementará de manera incremental mediante ramas .
+- `controller`: endpoints REST auxiliares.
+- `service`: lógica de notificaciones.
+- `config`: configuración de RabbitMQ.
+- `dto`: mensajes y contratos de eventos.
+- `exception`: manejo de errores.
+
+El código funcional se implementará de manera incremental mediante ramas `feature/*`.
