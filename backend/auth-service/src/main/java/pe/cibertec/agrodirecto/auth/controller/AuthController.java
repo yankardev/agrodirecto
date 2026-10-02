@@ -9,6 +9,7 @@ import pe.cibertec.agrodirecto.auth.dto.RegisterRequest;
 import pe.cibertec.agrodirecto.auth.service.AuthService;
 import org.springframework.security.core.Authentication;
 import pe.cibertec.agrodirecto.auth.dto.UserResponse;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -33,5 +34,11 @@ public class AuthController {
         return ResponseEntity.ok(
             authService.getCurrentUser(authentication.getName())
         );
+    }
+
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> adminOnly() {
+        return ResponseEntity.ok("Acceso permitido para ADMIN");
     }
 }
