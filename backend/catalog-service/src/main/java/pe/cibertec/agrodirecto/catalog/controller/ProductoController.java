@@ -2,6 +2,7 @@ package pe.cibertec.agrodirecto.catalog.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.cibertec.agrodirecto.catalog.dto.ProductoRequest;
 import pe.cibertec.agrodirecto.catalog.dto.ProductoResponse;
@@ -17,6 +18,7 @@ public class ProductoController {
     private final ProductoService productoService;
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('AGRICULTOR','ADMIN')")
     public ResponseEntity<ProductoResponse> crear(
         @RequestBody ProductoRequest request) {
 
@@ -61,6 +63,7 @@ public class ProductoController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('AGRICULTOR','ADMIN')")
     public ResponseEntity<ProductoResponse> actualizar(
         @PathVariable Long id,
         @RequestBody ProductoRequest request) {
@@ -71,6 +74,7 @@ public class ProductoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('AGRICULTOR','ADMIN')")
     public ResponseEntity<Void> eliminar(
         @PathVariable Long id) {
 
