@@ -5,12 +5,6 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: `
-    <main class="shell">
-      <h1>AgroDirecto</h1>
-      <p>Plataforma de comercialización directa del agricultor al consumidor.</p>
-      <router-outlet />
-    </main>
-  `
+  template: '<router-outlet />'
 })
 export class AppComponent {}
